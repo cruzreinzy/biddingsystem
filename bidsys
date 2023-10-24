@@ -1,0 +1,281 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BiddingSystem
+{
+    class Items
+    {
+        public string item_name;
+        public string price;
+        public string quantity;
+        public string status;
+
+        public string displayitem()
+        {
+            string[] displayit = {
+                                "Item Name: " + this.item_name                             
+                            };
+            return displayit[0];
+
+
+        }
+
+        public string infos()
+        {
+            string[] info = {
+                                "Item Name: " + this.item_name,
+                                "Price: " + this.price,
+                                "Quantity: " + this.quantity,
+                                "Status: " + this.status
+                            };
+            return info[0] + " " + "//" + " " + info[1] + " " + "//" + " " + info[2] + " " + "//" + " " + info[3];
+           
+
+        }
+
+        internal string displayit()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    class History : Items
+    {
+        public string history_itemname()
+        {
+            return item_name;
+        }  
+
+        public string bidding_cost;
+    }
+
+    class User : History
+    {
+        public string admin;
+        public string seller;
+        public string user;
+        public string usersbid;
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string chooseitem, usercount;
+
+            Items item1 = new Items();
+            Items item2 = new Items();
+            Items item3 = new Items();       
+
+            item1.item_name = "Medyas";
+            item1.price = "150";
+            item1.quantity = "6";
+            item1.status = "forSale";
+
+            item2.item_name = "Brief";
+            item2.price = "200";
+            item2.quantity = "3";
+            item2.status = "forSale";
+
+            item3.item_name = "Tsinelas";
+            item3.price = "500";
+            item3.quantity = "0";
+            item3.status = "forSale";
+
+
+            User user1 = new User();
+            User user2 = new User();
+            User user3 = new User();
+            User user4 = new User();
+
+
+            Items item = new Items();
+            History history = new History();
+            User user = new User();
+
+
+            Console.WriteLine("*********************************************************");
+            Console.WriteLine("*****************Bidding Session Started*****************");
+            Console.WriteLine("*********************************************************");
+            Console.WriteLine("************************Item List************************");
+            Console.WriteLine("*********************************************************");
+            //Console.WriteLine("(1) " + item1.infos());
+            //Console.WriteLine("(2) " + item2.infos());
+            //Console.WriteLine("(3) " + item3.infos());
+
+            Console.WriteLine("(1) " + item1.displayitem());
+            Console.WriteLine("(2) " + item2.displayitem());
+            Console.WriteLine("(3) " + item3.displayitem());
+
+            Console.WriteLine("*********************************************************");
+
+            Console.Write("Choose the item you want (1, 2, 3):");
+            chooseitem = Console.ReadLine();
+
+            Console.WriteLine("*********************************************************");
+
+            if(chooseitem == "1")
+            {
+                Console.WriteLine(item1.infos());
+                Console.WriteLine("*********************************************************");
+            }
+            else if (chooseitem == "2")
+            {
+                Console.WriteLine(item2.infos());
+                Console.WriteLine("*********************************************************");
+            }
+            else if (chooseitem == "3")
+            {
+                Console.WriteLine(item3.infos());
+                Console.WriteLine("*********************************************************");
+            }
+            else
+            {
+                while(chooseitem != "1" || chooseitem != "2" || chooseitem != "3"){
+
+                    Console.WriteLine("error");
+                    Console.WriteLine("*********************************************************");
+                    Console.Write("Choose the item you want (1, 2, 3):");
+                    chooseitem = Console.ReadLine();
+
+                    Console.WriteLine("*********************************************************");
+
+                    if(chooseitem == "1")
+                    {
+                        Console.WriteLine(item1.infos());
+                        Console.WriteLine("*********************************************************");
+                        break;
+                    }
+                    else if (chooseitem == "2")
+                    {
+                        Console.WriteLine(item2.infos());
+                        Console.WriteLine("*********************************************************");
+                        break;
+                    }
+                    else if (chooseitem == "3")
+                    {
+                        Console.WriteLine(item3.infos());
+                        Console.WriteLine("*********************************************************");
+                        break;
+                    }
+                }
+            }
+
+
+            //User
+
+
+            Console.Write("Enter number of users (min user = 2 / max user = 4): ");
+            usercount = Console.ReadLine();
+            Console.WriteLine("*********************************************************");
+
+            if (usercount == "2")
+            {
+                Console.Write("Enter User 1 nickname: ");
+                user1.user = Console.ReadLine();
+                Console.WriteLine("*********************************************************");
+                Console.Write("Enter User 2 nickname: ");
+                user2.user = Console.ReadLine();
+                Console.WriteLine("*********************************************************");
+            }
+            else if (usercount == "3")
+            {
+                Console.Write("Enter User 1 nickname: ");
+                user1.user = Console.ReadLine();
+                Console.WriteLine("*********************************************************");
+                Console.Write("Enter User 2 nickname: ");
+                user2.user = Console.ReadLine();
+                Console.WriteLine("*********************************************************");
+                Console.Write("Enter User 3 nickname: ");
+                user3.user = Console.ReadLine();
+                Console.WriteLine("*********************************************************");
+            }
+            else if (usercount == "4")
+            {
+                Console.Write("Enter User 1 nickname: ");
+                user1.user = Console.ReadLine();
+                Console.WriteLine("*********************************************************");
+                Console.Write("Enter User 2 nickname: ");
+                user2.user = Console.ReadLine();
+                Console.WriteLine("*********************************************************");
+                Console.Write("Enter User 3 nickname: ");
+                user3.user = Console.ReadLine();
+                Console.WriteLine("*********************************************************");
+                Console.Write("Enter User 4 nickname: ");
+                user4.user = Console.ReadLine();
+                Console.WriteLine("*********************************************************");
+            }
+            else
+            {
+                while (usercount != "2" || usercount != "3" || usercount != "4")
+                {             
+                    Console.WriteLine("error");
+                    Console.WriteLine("*********************************************************");
+                    Console.Write("Enter number of users (min user = 2 / max user = 4): ");
+                    usercount = Console.ReadLine();               
+
+                    Console.WriteLine("*********************************************************");
+
+                    if (usercount == "2")
+                    {
+                        Console.Write("Enter User 1 nickname: ");
+                        user1.user = Console.ReadLine();
+                        Console.WriteLine("*********************************************************");
+                        Console.Write("Enter User 2 nickname: ");
+                        user2.user = Console.ReadLine();
+                        Console.WriteLine("*********************************************************");
+                        break;
+                    }
+                    else if (usercount == "3")
+                    {
+                        Console.Write("Enter User 1 nickname: ");
+                        user1.user = Console.ReadLine();
+                        Console.WriteLine("*********************************************************");
+                        Console.Write("Enter User 2 nickname: ");
+                        user2.user = Console.ReadLine();
+                        Console.WriteLine("*********************************************************");
+                        Console.Write("Enter User 3 nickname: ");
+                        user3.user = Console.ReadLine();
+                        Console.WriteLine("*********************************************************");
+                        break;
+                    }
+                    else if (usercount == "4")
+                    {
+                        Console.Write("Enter User 1 nickname: ");
+                        user1.user = Console.ReadLine();
+                        Console.WriteLine("*********************************************************");
+                        Console.Write("Enter User 2 nickname: ");
+                        user2.user = Console.ReadLine();
+                        Console.WriteLine("*********************************************************");
+                        Console.Write("Enter User 3 nickname: ");
+                        user3.user = Console.ReadLine();
+                        Console.WriteLine("*********************************************************");
+                        Console.Write("Enter User 4 nickname: ");
+                        user4.user = Console.ReadLine();
+                        Console.WriteLine("*********************************************************");
+                        break;
+                    }
+                }
+            }
+       
+            Console.Write("User 1, name your price! : ");
+            user1.usersbid = Console.ReadLine();
+
+
+
+
+
+
+
+
+
+
+            Console.ReadKey();
+        }
+
+        //public static Items item { get; set; }
+    }
+}
